@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from "react"
-import {Route, Routes} from "react-router-dom";
+import { useNavigate, Route, Routes} from "react-router-dom";
 
 import SignInSide from './components/SignInSide';
 import SignUp from './components/SignUp';
@@ -11,6 +11,7 @@ import UserInfo from "./components/userInfo/UserInfo";
 
 
 function App() {
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -27,7 +28,10 @@ function App() {
   function handleLogOut() {
     fetch("/signout", {
       method: "DELETE",
-    }).then(() => setLoggedIn(false));
+    }).then(() => {
+      navigate("/")
+      setLoggedIn(false)
+    });
   }
 
 
@@ -37,6 +41,10 @@ function App() {
         response.json().then((user) => {
           setCurrentUser(user);
           console.log(user);
+          setFlightHistory(user.flight_histories)
+          setVehicleHistory(user.vehicle_histories)
+          setElectricityHistory(user.electricity_histories)
+          setShippingHistory(user.shipping_histories)
           setLoggedIn(true);
         });
       }
@@ -47,29 +55,6 @@ function App() {
   }, []);
 
 
-
-    // useEffect(() => {
-    //   fetch(`/users/${currentUser.id}/shipping_histories`)
-    //     .then((resp) => resp.json())
-    //     .then((data) => setShippingHistory(data))
-    //     .catch(error => console.log(error));
-  
-    //   fetch(`/users/${currentUser.id}/flight_histories`)
-    //     .then((resp) => resp.json())
-    //     .then((data) => setFlightHistory(data))
-    //     .catch(error => console.log(error));
-  
-    //   fetch(`/users/${currentUser.id}/vehicle_histories`)
-    //     .then((resp) => resp.json())
-    //     .then((data) => setVehicleHistory(data))
-    //     .catch(error => console.log(error));
-  
-    //   fetch(`/users/${currentUser.id}/electricity_histories`)
-    //     .then((resp) => resp.json())
-    //     .then((data) => setElectricityHistory(data))
-    //     .catch(error => console.log(error));
-    // }, [currentUser]);
-  
 
 
   function handleDeleteData(location, item) {
