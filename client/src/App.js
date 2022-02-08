@@ -40,7 +40,6 @@ function App() {
       if (response.ok) {
         response.json().then((user) => {
           setCurrentUser(user);
-          console.log(user);
           setFlightHistory(user.flight_histories)
           setVehicleHistory(user.vehicle_histories)
           setElectricityHistory(user.electricity_histories)
