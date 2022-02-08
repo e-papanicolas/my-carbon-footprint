@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2022_02_08_182417) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "electricity_histories", force: :cascade do |t|
     t.string "date"
     t.string "country"
     t.string "state"
     t.integer "electricity_value"
     t.float "carbon_lb"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_electricity_histories_on_user_id"
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_182417) do
     t.string "departure"
     t.string "destination"
     t.float "carbon_lb"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_flight_histories_on_user_id"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_182417) do
     t.integer "distance"
     t.string "method"
     t.float "carbon_lb"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_shipping_histories_on_user_id"
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_182417) do
     t.string "vehicle_model"
     t.integer "vehicle_year"
     t.float "carbon_lb"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_vehicle_histories_on_user_id"
