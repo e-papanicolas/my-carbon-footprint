@@ -1,0 +1,3 @@
+class ShippingHistory < ApplicationRecord
+  belongs_to :user
+end
