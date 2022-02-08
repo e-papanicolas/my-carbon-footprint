@@ -27,7 +27,7 @@ function NavBar({ handleLogOut }) {
         <ul>
           <li>
             <NavLink style={linkStyle} activestyle={{ color: "blue" }} to="/">
-              Home
+              Estimates
             </NavLink>
           </li>
           <li>

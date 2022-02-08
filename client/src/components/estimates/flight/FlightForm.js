@@ -18,8 +18,6 @@ function FlightForm({ handleFormSubmit, setFlightResults, flightResults }) {
   });
 
   function handleAirportSearch(e) {
-    console.log(e.target.value);
-
     let term = e.target.value;
     apca.request(term);
 
@@ -47,8 +45,6 @@ function FlightForm({ handleFormSubmit, setFlightResults, flightResults }) {
 
   function handleAirportSelect(e) {
     const code = e.target.value.split(" ").slice(-1).join("");
-
-    console.log("target: ", e.target.name);
 
     setFormData({
       ...formData,
