@@ -6,7 +6,7 @@ My Carbon Footprint takes a look at some of the most common carbon emitting acti
 
 ## Links
 
-See the [front end](https://github.com/katroll/my-carbon-footprint-react) code.
+See the [front end](https://github.com/e-papanicolas/my-carbon-footprint-react) code.
 
 ## Contributors
 
